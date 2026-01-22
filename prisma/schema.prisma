@@ -1,0 +1,25 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Guest {
+  id             String    @id @default(cuid())
+  name           String    // Nombre del invitado
+  code           String    @unique // Código único para URL
+  numberOfGuests Int       @default(1) // Número de personas
+  phone          String?   // Teléfono (opcional)
+  confirmed      Boolean   @default(false) // ¿Confirmó asistencia?
+  willAttend     Boolean?  // null = pendiente, true = sí asiste, false = no asiste
+  confirmedAt    DateTime? // Fecha de confirmación
+  message        String?   // Mensaje del invitado
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+}
