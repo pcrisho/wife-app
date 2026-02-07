@@ -121,45 +121,33 @@ export default function AnimatedEnvelope({
                 <div className="relative">
                     {/* Back of envelope */}
                     <div
-                        className="w-full aspect-[4/3] rounded-lg shadow-xl"
+                        className="w-full aspect-[4/3] shadow-xl"
                         style={{ backgroundColor: 'var(--sage-green)' }}
                     />
 
                     {/* Envelope Flap (Top Triangle) */}
+                    {/* 
+                        CERRADO: Base arriba, punta abajo (cubriendo el sobre)
+                        ABIERTO: Base se mantiene fija, punta sube hacia arriba
+                    */}
                     <motion.div
-                        className="absolute top-0 left-0 w-full origin-top"
+                        className="absolute top-0 left-0 w-full aspect-[4/2]"
                         style={{
-                            transformStyle: 'preserve-3d',
+                            backgroundColor: isOpen ? 'var(--sage-light)' : 'var(--sage-green)',
+                            clipPath: isOpen
+                                ? 'polygon(0 100%, 100% 100%, 50% 0)' // Base abajo, punta arriba
+                                : 'polygon(0 0, 100% 0, 50% 100%)',    // Base arriba, punta abajo
+                            transformOrigin: 'center top',
                             zIndex: isOpen ? -1 : 10,
                         }}
                         animate={{
-                            rotateX: isOpen ? -180 : 0,
+                            y: isOpen ? '-100%' : '0%',
                         }}
                         transition={{
                             duration: 0.8,
                             ease: [0.4, 0, 0.2, 1],
                         }}
-                    >
-                        {/* Front of flap */}
-                        <div
-                            className="w-full aspect-[4/2] clip-triangle-down"
-                            style={{
-                                backgroundColor: 'var(--sage-green)',
-                                clipPath: 'polygon(0 0, 100% 0, 50% 100%)',
-                                backfaceVisibility: 'hidden',
-                            }}
-                        />
-                        {/* Back of flap (lighter color) */}
-                        <div
-                            className="absolute top-0 left-0 w-full aspect-[4/2]"
-                            style={{
-                                backgroundColor: 'var(--sage-light)',
-                                clipPath: 'polygon(0 0, 100% 0, 50% 100%)',
-                                transform: 'rotateX(180deg)',
-                                backfaceVisibility: 'hidden',
-                            }}
-                        />
-                    </motion.div>
+                    />
 
                     {/* Gold Seal */}
                     <AnimatePresence>

@@ -10,7 +10,7 @@ export default function MusicPlayer() {
 
     useEffect(() => {
         // Create audio element
-        const audio = new Audio('/music/wedding-song.mp3');
+        const audio = new Audio('/track/Somos Novios.mp3');
         audio.loop = true;
         audio.volume = 0.3;
         audioRef.current = audio;
