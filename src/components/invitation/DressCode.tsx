@@ -80,11 +80,10 @@ export default function DressCode() {
                         </p>
                         <div className="flex justify-center gap-3">
                             {[
-                                { color: '#9CAF88', name: 'Verde' },
-                                { color: '#C9A962', name: 'Dorado' },
-                                { color: '#E8D5D5', name: 'Rosa' },
-                                { color: '#3D3D3D', name: 'Negro' },
-                                { color: '#F5EDE4', name: 'Beige' },
+                                { color: '#FFF9C4', name: 'Amarillo' },
+                                { color: '#B3E5FC', name: 'Celeste' },
+                                { color: '#F8BBD9', name: 'Rosa' },
+                                { color: '#C8E6C9', name: 'Verde' },
                             ].map((item) => (
                                 <div key={item.color} className="text-center">
                                     <div

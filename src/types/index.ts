@@ -47,10 +47,10 @@ export interface WeddingInfo {
 export const WEDDING_INFO: WeddingInfo = {
     groomName: 'Cristian',
     brideName: 'Christy',
-    date: new Date('2026-03-07T18:00:00'),
+    date: new Date('2026-03-07T16:00:00'),
     venue: {
         name: 'La Encantada',
-        address: 'Mz E, Lote 23, Grupo 2 - Villa El Salvador, Lima',
+        address: 'Sector 3, Grupo 11, Mz I, Lote 17 - Villa El Salvador, Lima',
         mapsUrl: 'https://maps.app.goo.gl/9YQGuMeXwMfHsCUt5',
     },
     parents: {

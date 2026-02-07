@@ -27,7 +27,7 @@ export default function AnimatedEnvelope({
         <div className="relative w-full max-w-sm mx-auto" style={{ perspective: '1000px' }}>
             {/* Envelope Container */}
             <motion.div
-                className="relative cursor-pointer"
+                className="relative cursor-pointer overflow-visible"
                 onClick={handleOpen}
                 whileHover={{ scale: isOpen ? 1 : 1.02 }}
                 whileTap={{ scale: isOpen ? 1 : 0.98 }}
@@ -43,7 +43,10 @@ export default function AnimatedEnvelope({
                     {/* Envelope Flap (Top Triangle) */}
                     <motion.div
                         className="absolute top-0 left-0 w-full origin-top"
-                        style={{ transformStyle: 'preserve-3d' }}
+                        style={{
+                            transformStyle: 'preserve-3d',
+                            zIndex: isOpen ? -1 : 10,
+                        }}
                         animate={{
                             rotateX: isOpen ? -180 : 0,
                         }}
@@ -126,9 +129,10 @@ export default function AnimatedEnvelope({
                     {isOpen && (
                         <motion.div
                             className="absolute left-1/2 -translate-x-1/2 w-[85%] bg-white rounded-lg shadow-2xl p-6 z-20"
-                            initial={{ y: 20, opacity: 0 }}
-                            animate={{ y: -80, opacity: 1 }}
-                            exit={{ y: 20, opacity: 0 }}
+                            style={{ bottom: '40%' }}
+                            initial={{ y: 100, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            exit={{ y: 100, opacity: 0 }}
                             transition={{
                                 delay: 0.4,
                                 duration: 0.6,

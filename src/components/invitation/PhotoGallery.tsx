@@ -8,14 +8,20 @@ interface PhotoGalleryProps {
     images?: string[];
 }
 
-// Placeholder images for demo
-const PLACEHOLDER_IMAGES = [
-    '/images/couple-1.jpg',
-    '/images/couple-2.jpg',
-    '/images/couple-3.jpg',
+// Wedding photos
+const WEDDING_IMAGES = [
+    '/images/WhatsApp Image 2026-01-27 at 11.27.40 PM.jpeg',
+    '/images/WhatsApp Image 2026-01-27 at 11.27.40 PM (1).jpeg',
+    '/images/WhatsApp Image 2026-01-27 at 11.27.40 PM (2).jpeg',
+    '/images/WhatsApp Image 2026-01-27 at 11.27.40 PM (3).jpeg',
+    '/images/WhatsApp Image 2026-01-27 at 11.27.40 PM (4).jpeg',
+    '/images/WhatsApp Image 2026-01-27 at 11.27.40 PM (5).jpeg',
+    '/images/WhatsApp Image 2026-01-27 at 11.27.40 PM (6).jpeg',
+    '/images/WhatsApp Image 2026-01-27 at 11.27.41 PM.jpeg',
+    '/images/WhatsApp Image 2026-01-27 at 11.27.41 PM (1).jpeg',
 ];
 
-export default function PhotoGallery({ images = PLACEHOLDER_IMAGES }: PhotoGalleryProps) {
+export default function PhotoGallery({ images = WEDDING_IMAGES }: PhotoGalleryProps) {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [direction, setDirection] = useState(0);
 
@@ -77,7 +83,7 @@ export default function PhotoGallery({ images = PLACEHOLDER_IMAGES }: PhotoGalle
                 </motion.div>
 
                 {/* Carousel */}
-                <div className="relative aspect-[3/4] max-w-sm mx-auto">
+                <div className="relative aspect-video max-w-lg mx-auto">
                     <AnimatePresence initial={false} custom={direction}>
                         <motion.div
                             key={currentIndex}
@@ -107,31 +113,14 @@ export default function PhotoGallery({ images = PLACEHOLDER_IMAGES }: PhotoGalle
                                 className="w-full h-full rounded-2xl overflow-hidden shadow-xl"
                                 style={{ backgroundColor: 'var(--sage-light)' }}
                             >
-                                {/* Placeholder for demo - replace with actual Image component */}
-                                <div className="w-full h-full flex items-center justify-center">
-                                    <div className="text-center p-8">
-                                        <div
-                                            className="w-24 h-24 mx-auto mb-4 rounded-full flex items-center justify-center"
-                                            style={{ backgroundColor: 'var(--sage-green)' }}
-                                        >
-                                            <span className="text-white text-3xl font-script">
-                                                C&C
-                                            </span>
-                                        </div>
-                                        <p
-                                            className="font-serif text-lg"
-                                            style={{ color: 'var(--charcoal)' }}
-                                        >
-                                            Foto {currentIndex + 1}
-                                        </p>
-                                        <p
-                                            className="text-sm mt-2"
-                                            style={{ color: 'var(--soft-gray)' }}
-                                        >
-                                            Agrega tus fotos en<br />/public/images/
-                                        </p>
-                                    </div>
-                                </div>
+                                <Image
+                                    src={images[currentIndex]}
+                                    alt={`Foto ${currentIndex + 1} de Christy & Cristian`}
+                                    fill
+                                    className="object-cover"
+                                    sizes="(max-width: 768px) 100vw, 400px"
+                                    priority={currentIndex === 0}
+                                />
                             </div>
                         </motion.div>
                     </AnimatePresence>
