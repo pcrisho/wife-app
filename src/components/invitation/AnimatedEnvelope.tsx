@@ -125,26 +125,51 @@ export default function AnimatedEnvelope({
                         style={{ backgroundColor: 'var(--sage-green)' }}
                     />
 
-                    {/* Envelope Flap (Top Triangle) */}
+                    {/* Envelope Flap (Top Triangle) - Opening Animation */}
                     {/* 
-                        CERRADO: Base arriba, punta abajo (cubriendo el sobre)
-                        ABIERTO: Base se mantiene fija, punta sube hacia arriba
+                        Dos triángulos superpuestos:
+                        1. Cerrado: punta abajo, se contrae al abrir
+                        2. Abierto: punta arriba, se expande al abrir
+                        Ambos con origin en la base para mantener alineación
                     */}
+
+                    {/* Flap cerrado - punta abajo (se contrae al abrir) */}
                     <motion.div
                         className="absolute top-0 left-0 w-full aspect-[4/2]"
                         style={{
-                            backgroundColor: isOpen ? 'var(--sage-light)' : 'var(--sage-green)',
-                            clipPath: isOpen
-                                ? 'polygon(0 100%, 100% 100%, 50% 0)' // Base abajo, punta arriba
-                                : 'polygon(0 0, 100% 0, 50% 100%)',    // Base arriba, punta abajo
+                            backgroundColor: 'var(--sage-green)',
+                            clipPath: 'polygon(0 0, 100% 0, 50% 100%)', // base arriba, punta abajo
                             transformOrigin: 'center top',
                             zIndex: isOpen ? -1 : 10,
                         }}
                         animate={{
-                            y: isOpen ? '-100%' : '0%',
+                            scaleY: isOpen ? 0 : 1,
+                            opacity: isOpen ? 0 : 1,
                         }}
                         transition={{
-                            duration: 0.8,
+                            duration: 0.5,
+                            ease: [0.4, 0, 0.2, 1],
+                        }}
+                    />
+
+                    {/* Flap abierto - punta arriba (se expande al abrir) */}
+                    <motion.div
+                        className="absolute top-0 left-0 w-full aspect-[4/2]"
+                        style={{
+                            backgroundColor: 'var(--sage-light)',
+                            clipPath: 'polygon(50% 0, 100% 100%, 0 100%)', // punta arriba, base abajo
+                            transformOrigin: 'center bottom',
+                            zIndex: isOpen ? 5 : -1,
+                        }}
+                        initial={{ scaleY: 0, opacity: 0, y: '-100%' }}
+                        animate={{
+                            scaleY: isOpen ? 1 : 0,
+                            opacity: isOpen ? 1 : 0,
+                            y: '-100%',
+                        }}
+                        transition={{
+                            duration: 0.5,
+                            delay: isOpen ? 0.2 : 0,
                             ease: [0.4, 0, 0.2, 1],
                         }}
                     />

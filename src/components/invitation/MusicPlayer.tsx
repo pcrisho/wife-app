@@ -15,12 +15,44 @@ export default function MusicPlayer() {
         audio.volume = 0.3;
         audioRef.current = audio;
 
+        // Attempt autoplay
+        const attemptPlay = async () => {
+            try {
+                await audio.play();
+                setIsPlaying(true);
+                setHasInteracted(true);
+            } catch (error) {
+                console.log('Autoplay prevented by browser policy:', error);
+            }
+        };
+
+        // If autoplay fails, play on first interaction
+        const handleInteraction = () => {
+            if (audio.paused) {
+                attemptPlay();
+            }
+            // Remove listeners once interacted
+            document.removeEventListener('click', handleInteraction);
+            document.removeEventListener('touchstart', handleInteraction);
+            document.removeEventListener('keydown', handleInteraction);
+        };
+
+        attemptPlay();
+
+        // Add global listeners for backup
+        document.addEventListener('click', handleInteraction);
+        document.addEventListener('touchstart', handleInteraction);
+        document.addEventListener('keydown', handleInteraction);
+
         // Cleanup
         return () => {
             if (audioRef.current) {
                 audioRef.current.pause();
                 audioRef.current = null;
             }
+            document.removeEventListener('click', handleInteraction);
+            document.removeEventListener('touchstart', handleInteraction);
+            document.removeEventListener('keydown', handleInteraction);
         };
     }, []);
 

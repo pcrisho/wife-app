@@ -59,20 +59,20 @@ export default function PhotoGallery({ images = WEDDING_IMAGES }: PhotoGalleryPr
 
     return (
         <section
-            className="section overflow-hidden"
+            className="section overflow-hidden !p-0 md:!py-20"
             style={{ backgroundColor: 'var(--warm-beige)' }}
         >
-            <div className="max-w-lg mx-auto">
+            <div className="w-full">
                 {/* Title */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
-                    className="text-center mb-8"
+                    className="text-center mb-8 px-6 pt-12 md:pt-0"
                 >
                     <h2
-                        className="heading-script text-3xl md:text-4xl mb-2"
+                        className="heading-script text-3xl md:text-5xl mb-2"
                         style={{ color: 'var(--charcoal)' }}
                     >
                         Nuestra Historia
@@ -83,7 +83,7 @@ export default function PhotoGallery({ images = WEDDING_IMAGES }: PhotoGalleryPr
                 </motion.div>
 
                 {/* Carousel */}
-                <div className="relative aspect-video max-w-lg mx-auto">
+                <div className="relative w-full aspect-square md:aspect-video md:max-w-5xl md:mx-auto md:rounded-2xl shadow-xl overflow-hidden">
                     <AnimatePresence initial={false} custom={direction}>
                         <motion.div
                             key={currentIndex}
@@ -110,15 +110,14 @@ export default function PhotoGallery({ images = WEDDING_IMAGES }: PhotoGalleryPr
                             className="absolute inset-0 cursor-grab active:cursor-grabbing"
                         >
                             <div
-                                className="w-full h-full rounded-2xl overflow-hidden shadow-xl"
-                                style={{ backgroundColor: 'var(--sage-light)' }}
+                                className="w-full h-full bg-neutral-200"
                             >
                                 <Image
                                     src={images[currentIndex]}
                                     alt={`Foto ${currentIndex + 1} de Christy & Cristian`}
                                     fill
                                     className="object-cover"
-                                    sizes="(max-width: 768px) 100vw, 400px"
+                                    sizes="(max-width: 768px) 100vw, 1200px"
                                     priority={currentIndex === 0}
                                 />
                             </div>
@@ -128,26 +127,26 @@ export default function PhotoGallery({ images = WEDDING_IMAGES }: PhotoGalleryPr
                     {/* Navigation Arrows */}
                     <button
                         onClick={() => paginate(-1)}
-                        className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full flex items-center justify-center shadow-lg transition-transform hover:scale-110"
-                        style={{ backgroundColor: 'white' }}
+                        className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-transform hover:scale-110 active:scale-95"
+                        style={{ backgroundColor: 'rgba(255, 255, 255, 0.9)' }}
                     >
-                        <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" style={{ color: 'var(--charcoal)' }}>
+                        <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" style={{ color: 'var(--charcoal)' }}>
                             <path d="M15 19l-7-7 7-7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                     </button>
                     <button
                         onClick={() => paginate(1)}
-                        className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full flex items-center justify-center shadow-lg transition-transform hover:scale-110"
-                        style={{ backgroundColor: 'white' }}
+                        className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-transform hover:scale-110 active:scale-95"
+                        style={{ backgroundColor: 'rgba(255, 255, 255, 0.9)' }}
                     >
-                        <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" style={{ color: 'var(--charcoal)' }}>
+                        <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" style={{ color: 'var(--charcoal)' }}>
                             <path d="M9 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                     </button>
                 </div>
 
                 {/* Dots Indicator */}
-                <div className="flex justify-center gap-2 mt-6">
+                <div className="flex justify-center gap-2 mt-8 pb-12 md:pb-0">
                     {images.map((_, index) => (
                         <button
                             key={index}

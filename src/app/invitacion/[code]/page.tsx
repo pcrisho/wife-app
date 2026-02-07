@@ -63,7 +63,7 @@ export default async function InvitationPage({ params }: InvitationPageProps) {
                 className="section"
                 style={{ backgroundColor: 'var(--cream)' }}
             >
-                <div className="max-w-lg mx-auto text-center mb-8">
+                <div className="max-w-lg mx-auto text-center mb-16 relative z-50">
                     <p
                         className="text-sm uppercase tracking-[0.2em] mb-2"
                         style={{ color: 'var(--soft-gray)' }}
