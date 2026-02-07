@@ -21,6 +21,7 @@ export default function EventDetails() {
 
     return (
         <section
+            id="event-details"
             className="section"
             style={{ backgroundColor: 'white' }}
         >

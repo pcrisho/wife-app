@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 
 interface AnimatedEnvelopeProps {
     guestName: string;
@@ -23,8 +24,92 @@ export default function AnimatedEnvelope({
         }
     };
 
+    const scrollToDetails = () => {
+        const detailsSection = document.getElementById('event-details');
+        if (detailsSection) {
+            detailsSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
     return (
-        <div className="relative w-full max-w-sm mx-auto" style={{ perspective: '1000px' }}>
+        <div className="relative w-full max-w-sm mx-auto py-8" style={{ perspective: '1000px' }}>
+            {/* Decorative Flowers - Left (Eucalipto) */}
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        className="absolute -left-4 md:-left-8 top-0 w-20 md:w-28 z-30 pointer-events-none"
+                        initial={{ opacity: 0, x: 30, rotate: 15 }}
+                        animate={{ opacity: 1, x: 0, rotate: 0 }}
+                        exit={{ opacity: 0, x: 30 }}
+                        transition={{ delay: 0.3, duration: 0.6, ease: 'easeOut' }}
+                    >
+                        <Image
+                            src="/images/flowers/Gemini_Generated_Image_vgflc5vgflc5vgfl (1).png"
+                            alt="Eucalipto decorativo"
+                            width={120}
+                            height={200}
+                            className="object-contain"
+                        />
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
+            {/* Decorative Flowers - Right (Lavanda) */}
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        className="absolute -right-4 md:-right-8 top-0 w-16 md:w-24 z-30 pointer-events-none"
+                        initial={{ opacity: 0, x: -30, rotate: -15 }}
+                        animate={{ opacity: 1, x: 0, rotate: 0 }}
+                        exit={{ opacity: 0, x: -30 }}
+                        transition={{ delay: 0.4, duration: 0.6, ease: 'easeOut' }}
+                    >
+                        <Image
+                            src="/images/flowers/Gemini_Generated_Image_j6ofjhj6ofjhj6of (1).png"
+                            alt="Lavanda decorativa"
+                            width={100}
+                            height={200}
+                            className="object-contain"
+                        />
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
+            {/* Photo Polaroid - emerges from envelope */}
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        className="absolute right-2 md:right-4 -top-4 z-40"
+                        initial={{ opacity: 0, y: 80, rotate: 0, scale: 0.5 }}
+                        animate={{ opacity: 1, y: -20, rotate: 8, scale: 1 }}
+                        exit={{ opacity: 0, y: 80, scale: 0.5 }}
+                        transition={{ delay: 0.7, duration: 0.5, ease: 'easeOut' }}
+                    >
+                        <div
+                            className="bg-white p-2 shadow-xl"
+                            style={{
+                                boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
+                            }}
+                        >
+                            <div className="w-24 h-20 md:w-28 md:h-24 relative overflow-hidden">
+                                <Image
+                                    src="/images/WhatsApp Image 2026-01-27 at 11.27.40 PM (2).jpeg"
+                                    alt="Christy & Cristian"
+                                    fill
+                                    className="object-cover"
+                                />
+                            </div>
+                            <p
+                                className="text-center text-xs mt-1 font-serif"
+                                style={{ color: 'var(--charcoal)' }}
+                            >
+                                C & C
+                            </p>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
             {/* Envelope Container */}
             <motion.div
                 className="relative cursor-pointer overflow-visible"
@@ -124,27 +209,27 @@ export default function AnimatedEnvelope({
                     />
                 </div>
 
-                {/* Invitation Card (appears when open) */}
+                {/* Main Invitation Card (appears when open) */}
                 <AnimatePresence>
                     {isOpen && (
                         <motion.div
-                            className="absolute left-1/2 -translate-x-1/2 w-[85%] bg-white rounded-lg shadow-2xl p-6 z-20"
-                            style={{ bottom: '40%' }}
+                            className="absolute left-1/2 -translate-x-1/2 w-[85%] bg-white rounded-lg shadow-2xl p-5 z-20"
+                            style={{ bottom: '30%' }}
                             initial={{ y: 100, opacity: 0 }}
                             animate={{ y: 0, opacity: 1 }}
                             exit={{ y: 100, opacity: 0 }}
                             transition={{
-                                delay: 0.4,
+                                delay: 0.5,
                                 duration: 0.6,
                                 ease: [0.4, 0, 0.2, 1],
                             }}
                         >
-                            <div className="text-center space-y-3">
+                            <div className="text-center space-y-2">
                                 <p
-                                    className="text-sm uppercase tracking-[0.2em]"
+                                    className="text-xs uppercase tracking-[0.15em]"
                                     style={{ color: 'var(--soft-gray)' }}
                                 >
-                                    Fuiste invitado/a
+                                    Pase reservado para
                                 </p>
                                 <h3
                                     className="text-xl font-serif font-semibold"
@@ -160,7 +245,7 @@ export default function AnimatedEnvelope({
                                 </div>
 
                                 {/* Decorative divider */}
-                                <div className="flex items-center justify-center gap-2 py-2">
+                                <div className="flex items-center justify-center gap-2 py-1">
                                     <div className="w-8 h-px" style={{ backgroundColor: 'var(--sage-light)' }} />
                                     <div
                                         className="w-2 h-2 rounded-full"
@@ -168,15 +253,43 @@ export default function AnimatedEnvelope({
                                     />
                                     <div className="w-8 h-px" style={{ backgroundColor: 'var(--sage-light)' }} />
                                 </div>
-
-                                <p
-                                    className="text-xs"
-                                    style={{ color: 'var(--soft-gray)' }}
-                                >
-                                    Desliza para ver más detalles
-                                </p>
                             </div>
                         </motion.div>
+                    )}
+                </AnimatePresence>
+
+                {/* Secondary Card - "Ver más detalles" with scroll */}
+                <AnimatePresence>
+                    {isOpen && (
+                        <motion.button
+                            className="absolute left-1/2 -translate-x-1/2 bg-white rounded-lg shadow-lg px-4 py-2 z-20 cursor-pointer hover:shadow-xl transition-shadow"
+                            style={{ bottom: '-20px' }}
+                            initial={{ y: 50, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            exit={{ y: 50, opacity: 0 }}
+                            transition={{
+                                delay: 0.9,
+                                duration: 0.5,
+                                ease: 'easeOut',
+                            }}
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                scrollToDetails();
+                            }}
+                        >
+                            <p
+                                className="text-xs"
+                                style={{ color: 'var(--soft-gray)' }}
+                            >
+                                Clic aquí para ver
+                            </p>
+                            <p
+                                className="text-sm font-medium"
+                                style={{ color: 'var(--sage-dark)' }}
+                            >
+                                más detalles
+                            </p>
+                        </motion.button>
                     )}
                 </AnimatePresence>
             </motion.div>
@@ -195,6 +308,23 @@ export default function AnimatedEnvelope({
                     </motion.p>
                 )}
             </AnimatePresence>
+
+            {/* Couple Names below envelope */}
+            <motion.div
+                className="text-center mt-8"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.3 }}
+            >
+                <h2
+                    className="heading-script text-3xl"
+                    style={{ color: 'var(--charcoal)' }}
+                >
+                    Christy{' '}
+                    <span style={{ color: 'var(--gold)' }}>&</span>{' '}
+                    Cristian
+                </h2>
+            </motion.div>
         </div>
     );
 }
