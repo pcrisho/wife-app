@@ -127,7 +127,7 @@ export default function EventDetails() {
                         {/* Google Maps Embed */}
                         <div className="rounded-xl overflow-hidden shadow-inner mb-4">
                             <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.6089!2d-76.9375!3d-12.2125!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDEyJzQ1LjAiUyA3NsKwNTYnMTUuMCJX!5e0!3m2!1ses!2spe!4v1"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d243.70972881572172!2d-76.93004091518809!3d-12.22418051955486!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105bbe52d8dfb39%3A0x4ed844844d9bb677!2sCalle%20Los%20Laureles%20Mz.I%20-%20Lt.16%2C%20Villa%20EL%20Salvador%2015836!5e0!3m2!1ses-419!2spe!4v1770599675214!5m2!1ses-419!2spe"
                                 width="100%"
                                 height="200"
                                 style={{ border: 0 }}

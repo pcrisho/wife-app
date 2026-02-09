@@ -122,7 +122,7 @@ export default function AnimatedEnvelope({
                     {/* Back of envelope */}
                     <div
                         className="w-full aspect-[4/3] shadow-xl"
-                        style={{ backgroundColor: 'var(--sage-green)' }}
+                        style={{ backgroundColor: 'var(--paper-base)' }}
                     />
 
                     {/* Envelope Flap (Top Triangle) - Opening Animation */}
@@ -137,7 +137,7 @@ export default function AnimatedEnvelope({
                     <motion.div
                         className="absolute top-0 left-0 w-full aspect-[4/2]"
                         style={{
-                            backgroundColor: 'var(--sage-green)',
+                            backgroundColor: 'var(--paper-base)',
                             clipPath: 'polygon(0 0, 100% 0, 50% 100%)', // base arriba, punta abajo
                             transformOrigin: 'center top',
                             zIndex: isOpen ? -1 : 10,
@@ -156,7 +156,7 @@ export default function AnimatedEnvelope({
                     <motion.div
                         className="absolute top-0 left-0 w-full aspect-[4/2]"
                         style={{
-                            backgroundColor: 'var(--sage-light)',
+                            backgroundColor: 'var(--paper-light)',
                             clipPath: 'polygon(50% 0, 100% 100%, 0 100%)', // punta arriba, base abajo
                             transformOrigin: 'center bottom',
                             zIndex: isOpen ? 5 : -1,
@@ -200,7 +200,7 @@ export default function AnimatedEnvelope({
                     <div
                         className="absolute bottom-0 left-0 w-full aspect-[4/2] rounded-b-lg"
                         style={{
-                            backgroundColor: 'var(--sage-green)',
+                            backgroundColor: 'var(--paper-base)',
                             clipPath: 'polygon(0 100%, 50% 30%, 100% 100%)',
                         }}
                     />
@@ -209,14 +209,14 @@ export default function AnimatedEnvelope({
                     <div
                         className="absolute bottom-0 left-0 w-1/2 aspect-[2/3]"
                         style={{
-                            backgroundColor: '#8BA078',
+                            backgroundColor: 'var(--paper-dark)',
                             clipPath: 'polygon(0 100%, 0 20%, 100% 100%)',
                         }}
                     />
                     <div
                         className="absolute bottom-0 right-0 w-1/2 aspect-[2/3]"
                         style={{
-                            backgroundColor: '#8BA078',
+                            backgroundColor: 'var(--paper-dark)',
                             clipPath: 'polygon(100% 100%, 100% 20%, 0 100%)',
                         }}
                     />
@@ -252,19 +252,19 @@ export default function AnimatedEnvelope({
                                 </h3>
                                 <div
                                     className="text-sm"
-                                    style={{ color: 'var(--sage-dark)' }}
+                                    style={{ color: 'var(--steel-dark)' }}
                                 >
                                     {numberOfGuests} {numberOfGuests === 1 ? 'persona' : 'personas'}
                                 </div>
 
                                 {/* Decorative divider */}
                                 <div className="flex items-center justify-center gap-2 py-1">
-                                    <div className="w-8 h-px" style={{ backgroundColor: 'var(--sage-light)' }} />
+                                    <div className="w-8 h-px" />
                                     <div
                                         className="w-2 h-2 rounded-full"
                                         style={{ backgroundColor: 'var(--gold)' }}
                                     />
-                                    <div className="w-8 h-px" style={{ backgroundColor: 'var(--sage-light)' }} />
+                                    <div className="w-8 h-px" style={{ backgroundColor: 'var(--baby-blue)' }} />
                                 </div>
                             </div>
                         </motion.div>
@@ -298,7 +298,7 @@ export default function AnimatedEnvelope({
                             </p>
                             <p
                                 className="text-sm font-medium"
-                                style={{ color: 'var(--sage-dark)' }}
+                                style={{ color: 'var(--steel-dark)' }}
                             >
                                 más detalles
                             </p>

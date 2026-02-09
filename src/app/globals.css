@@ -1,47 +1,77 @@
 @import "tailwindcss";
 
-/* Wedding Color Palette */
+/* Wedding Color Palette - Pearl & Baby Blue */
 :root {
-  /* Primary Colors */
-  --sage-green: #9CAF88;
-  --sage-light: #B8C9A3;
-  --sage-dark: #7A8F6A;
-  
-  /* Neutral Colors */
-  --cream: #FDF8F3;
-  --warm-beige: #F5EDE4;
-  --blush-pink: #E8D5D5;
-  
+  /* New Palette Definitions */
+  --steel-blue: #5499C7;
+  /* Azul Acero Suave (Textos/Botones) */
+  --baby-blue: #A7C7E7;
+  /* Celeste Bebé Principal */
+  --light-blue: #D4E6F1;
+  /* Celeste Claro (Brillos/Fondos) */
+  --steel-dark: #3E7CA8;
+  /* Darker shade for hover */
+
+  --pearl-white: #FBFCFC;
+  /* Blanco Perla (Fondo Principal) */
+  --soft-pearl: #F4F6F6;
+  /* Perla Suave (Secciones alternas) */
+
+  /* Envelope Colors (Paper/Beige Style) */
+  --paper-base: #E3DACE;
+  /* Beige suave elegante */
+  --paper-light: #F7F2EB;
+  /* Interior casi blanco/crema */
+  --paper-dark: #C9BCAB;
+  /* Sombra sutil */
+
+  /* Legacy Mappings (Sage/Beige -> Blue/Pearl) */
+  --sage-green: var(--steel-blue);
+  --sage-light: var(--baby-blue);
+  --sage-dark: var(--steel-dark);
+
+  --cream: var(--pearl-white);
+  --warm-beige: var(--soft-pearl);
+  --blush-pink: var(--light-blue);
+
   /* Accent Colors */
   --gold: #C9A962;
   --gold-light: #D4BC82;
-  
+
   /* Text Colors */
   --charcoal: #3D3D3D;
   --soft-gray: #8B8B8B;
   --text-light: #6B6B6B;
-  
+
   /* Background */
-  --background: var(--cream);
+  --background: var(--pearl-white);
   --foreground: var(--charcoal);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  
-  /* Custom Colors for Tailwind */
+
+  /* New Colors */
+  --color-steel: var(--steel-blue);
+  --color-baby: var(--baby-blue);
+  --color-light-blue: var(--light-blue);
+  --color-pearl: var(--pearl-white);
+  --color-soft-pearl: var(--soft-pearl);
+
+  /* Legacy Mappings */
   --color-sage: var(--sage-green);
   --color-sage-light: var(--sage-light);
   --color-sage-dark: var(--sage-dark);
   --color-cream: var(--cream);
   --color-warm-beige: var(--warm-beige);
   --color-blush: var(--blush-pink);
+
   --color-gold: var(--gold);
   --color-gold-light: var(--gold-light);
   --color-charcoal: var(--charcoal);
   --color-soft-gray: var(--soft-gray);
-  
+
   /* Fonts */
   --font-serif: 'Cormorant Garamond', Georgia, serif;
   --font-script: 'Great Vibes', cursive;
@@ -158,6 +188,7 @@ body {
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -165,10 +196,13 @@ body {
 }
 
 @keyframes pulse-soft {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: scale(1);
     opacity: 1;
   }
+
   50% {
     transform: scale(1.05);
     opacity: 0.8;
@@ -176,9 +210,12 @@ body {
 }
 
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-10px);
   }
